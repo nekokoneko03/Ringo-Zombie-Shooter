@@ -8,16 +8,15 @@ public class movementController: MonoBehaviour
 
     public float blinkPower = 2.0f;
 
-    public bool isBlink = false;
+    private bool isBlink = false;
     private Vector2 blinkDir;
     private Rigidbody2D rb2d;
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb2d = this.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.S))
