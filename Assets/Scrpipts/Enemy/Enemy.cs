@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy Stat")]
-    public float maxHp = 0f;
-    public float moveSpeed = 0f;
-    public float spawnInterval = 0f;
+    [Header("Enemy Status")]
+    public EnemyStatus status;
 
     private Transform target;
 
@@ -19,6 +17,6 @@ public class Enemy : MonoBehaviour
     protected void MoveToTarget()
     {
         this.transform.position = 
-            Vector2.MoveTowards(this.transform.position, target.position, moveSpeed * Time.deltaTime);
+            Vector2.MoveTowards(this.transform.position, target.position, status.moveSpeed * Time.deltaTime);
     }
 }

@@ -627,7 +627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawnEnebled: 1
-  enemyPrefabs: []
+  enemyPrefabs:
+  - {fileID: 6973392657186846086, guid: 72af0ee90852cae40a4e69207115c8cf, type: 3}
+  - {fileID: -7651618600292134126, guid: 8372df4f48495fa4e9c773d36631feb9, type: 3}
   spawnPoints:
   - {fileID: 1570228287}
   - {fileID: 1481727452}
