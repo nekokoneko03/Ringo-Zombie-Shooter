@@ -45,7 +45,7 @@ public class enemySpawnManager : MonoBehaviour
     {
         foreach (Enemy enemy in enemyPrefabs)
         {
-            if (spawnTimer % enemy.spawnTime == 0)
+            if (spawnTimer % enemy.status.spawnInterval == 0)
             {
                 spawnableEnemies.Add(enemy);
             }

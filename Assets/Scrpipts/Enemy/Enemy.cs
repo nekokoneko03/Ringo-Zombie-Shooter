@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float moveSpeed;
-    public float spawnTime;
+    [Header("Enemy Status")]
+    public EnemyStatus status;
 
     private Transform target;
 
@@ -14,14 +14,9 @@ public class Enemy : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Update()
-    {
-        MoveToTarget();
-    }
-
-    void MoveToTarget()
+    protected void MoveToTarget()
     {
         this.transform.position = 
-            Vector2.MoveTowards(this.transform.position, target.position, moveSpeed * Time.deltaTime);
+            Vector2.MoveTowards(this.transform.position, target.position, status.moveSpeed * Time.deltaTime);
     }
 }
