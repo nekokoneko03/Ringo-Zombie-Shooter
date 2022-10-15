@@ -2,50 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movementController: MonoBehaviour
+public class movementController : MonoBehaviour
 {
+    [SerializeField] private Animator playerAnim;
+
     public float speed = 1.0f;
 
     public float blinkPower = 2.0f;
 
     private bool isBlink = false;
-    private bool canBlink = true;
-
     private Vector2 blinkDir;
+
     private Rigidbody2D rb2d;
-    
+    private SpriteRenderer playerRenderer;
+
     void Start()
     {
         rb2d = this.GetComponent<Rigidbody2D>();
+        playerRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        if (isBlink) return;
-
         if (Input.GetKey(KeyCode.S))
         {
             this.transform.position += Vector3.down * speed * Time.deltaTime;
+
+            playerAnim.SetFloat("Y", -1);
+
             blinkDir.y = Mathf.Clamp(-1, -1, 0);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             this.transform.position += Vector3.right * speed * Time.deltaTime;
+
+            playerAnim.SetFloat("X", 1);
+
+            playerRenderer.flipX = false;
+
             blinkDir.x = Mathf.Clamp(1, 0, 1);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             this.transform.position += Vector3.up * speed * Time.deltaTime;
+
+            playerAnim.SetFloat("Y", 1);
+
             blinkDir.y = Mathf.Clamp(1, 0, 1);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             this.transform.position += Vector3.left * speed * Time.deltaTime;
+
+            playerAnim.SetFloat("X", -1);
+
+            playerRenderer.flipX = true;
+
             blinkDir.x = Mathf.Clamp(-1, -1, 0);
         }
+
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        {
+            playerAnim.SetBool("Ringo Walk", false);
+            playerAnim.SetBool("Ringo Idle", true);
+        }
+        else
+        {
+            playerAnim.SetBool("Ringo Walk", true);
+            playerAnim.SetBool("Ringo Idle", false);
+        }
+
+        // ----------------ブリンク用の処理------------------------
 
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
@@ -59,7 +89,10 @@ public class movementController: MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (canBlink) Blink();
+            if (!isBlink)
+            {
+                Blink();
+            }
         }
     }
 
@@ -67,24 +100,20 @@ public class movementController: MonoBehaviour
     {
         rb2d.AddForce(blinkDir * blinkPower, ForceMode2D.Impulse);
         StartCoroutine(StopBlink());
-
         isBlink = true;
-        canBlink = false;
     }
 
     IEnumerator StopBlink()
     {
-        yield return new WaitForSeconds(0.35f); // ブリンクする時間の長さ
+        yield return new WaitForSeconds(0.35f);
         rb2d.velocity = Vector2.zero;
         StartCoroutine(BlinkDelay());
-
-        isBlink = false;
     }
 
     IEnumerator BlinkDelay()
     {
         yield return new WaitForSeconds(1.0f);
-
-        canBlink = true;
+        isBlink = false;
     }
 }
+

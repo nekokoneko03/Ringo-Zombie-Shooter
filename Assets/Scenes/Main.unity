@@ -1310,6 +1310,7 @@ GameObject:
   - component: {fileID: 1441549099}
   - component: {fileID: 1441549103}
   - component: {fileID: 1441549102}
+  - component: {fileID: 1441549105}
   m_Layer: 0
   m_Name: Ringo_Player
   m_TagString: Player
@@ -1396,6 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d967f731fc0b04b9b09a2dcb07e7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnim: {fileID: 1441549105}
   speed: 1
   blinkPower: 2
 --- !u!58 &1441549102
@@ -1452,6 +1454,26 @@ MonoBehaviour:
   shotSpeed: 4
   shotDelay: 1
   canShot: 0
+--- !u!95 &1441549105
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441549098}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d3b1fda4bcf258418dac9b7717e9e51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1481727451
 GameObject:
   m_ObjectHideFlags: 0
