@@ -14,12 +14,12 @@ public class movementController: MonoBehaviour
     private Vector2 blinkDir;
 
     private Rigidbody2D rb2d;
-    private SpriteRenderer renderer;
+    private SpriteRenderer playerRenderer;
 
     void Start()
     {
         rb2d = this.GetComponent<Rigidbody2D>();
-        renderer = this.GetComponent<SpriteRenderer>();
+        playerRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class movementController: MonoBehaviour
 
             playerAnim.SetFloat("X", 1);
 
-            renderer.flipX = false;
+            playerRenderer.flipX = false;
 
             blinkDir.x = Mathf.Clamp(1, 0, 1);
         }
@@ -59,7 +59,7 @@ public class movementController: MonoBehaviour
 
             playerAnim.SetFloat("X", -1);
 
-            renderer.flipX = true;
+            playerRenderer.flipX = true;
 
             blinkDir.x = Mathf.Clamp(-1, -1, 0);
         }
