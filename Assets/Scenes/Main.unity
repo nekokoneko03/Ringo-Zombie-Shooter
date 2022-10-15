@@ -1306,6 +1306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441549100}
   - component: {fileID: 1441549101}
+  - component: {fileID: 1441549104}
   - component: {fileID: 1441549099}
   - component: {fileID: 1441549103}
   - component: {fileID: 1441549102}
@@ -1396,7 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  isBlink: 0
+  blinkPower: 2
 --- !u!58 &1441549102
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1434,6 +1435,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1441549104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441549098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f646182cb7ebe4bb87ca0f8fe19476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  shotPoint: {fileID: 0}
 --- !u!1 &1481727451
 GameObject:
   m_ObjectHideFlags: 0
