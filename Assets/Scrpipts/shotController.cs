@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class shotController : MonoBehaviour
@@ -5,18 +6,24 @@ public class shotController : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shotPoint;
 
+    public float shotSpeed;
+    public float shotDelay;
+
+    public bool canShot;
+
     void Start()
     {
-        
+        canShot = true;
     }
 
     void Update()
     {
         Vector2 direction = GetKeyInput();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canShot)
         {
             Shot(direction);
+            StartCoroutine(ShotDelay(shotDelay));
         }
     }
 
@@ -25,13 +32,29 @@ public class shotController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        return new Vector2(x, y);
+        return new Vector2(x, y).normalized;
     }
 
     void Shot(Vector2 direction)
     {
         Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
         Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
-        rb2d.velocity = direction * 1f; // 弾のステータスのスピードをかける
+
+        if (direction == Vector2.zero)
+        {
+            rb2d.velocity = Vector2.right * shotSpeed;
+        }
+        else
+        {
+            rb2d.velocity = direction * shotSpeed; // 弾のステータスのスピードをかける
+        }
+
+        canShot = false;
+    }
+
+    IEnumerator ShotDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canShot = true;
     }
 }
