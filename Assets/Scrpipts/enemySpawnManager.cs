@@ -34,27 +34,39 @@ public class enemySpawnManager : MonoBehaviour
         {
             spawnTimer += 1.0f;
 
-            CheckSpawnableEnemy();
-            SpawnEnemy();
+            if (enemyPrefabs.Count > 0)
+            {
+                GetSpawnableEnemy(enemyPrefabs, spawnTimer);
+            }
+
+            if (spawnableEnemies.Count > 0)
+            {
+                SpawnEnemy(spawnableEnemies);
+            }
 
             timer = 0f;
         }
     }
 
-    void CheckSpawnableEnemy()
+    void GetSpawnableEnemy(List<Enemy> enemyList, float spawnTimer)
     {
-        foreach (Enemy enemy in enemyPrefabs)
+        foreach (Enemy enemy in enemyList)
         {
-            if (spawnTimer % enemy.status.spawnInterval == 0)
-            {
-                spawnableEnemies.Add(enemy);
-            }
+            CheckSpawnable(enemy, spawnTimer);
         }
     }
 
-    void SpawnEnemy()
+    void CheckSpawnable(Enemy enemy, float spawnTimer)
     {
-        foreach (Enemy enemy in spawnableEnemies)
+        if (spawnTimer % enemy.status.spawnInterval == 0)
+        {
+            spawnableEnemies.Add(enemy);
+        }
+    }
+
+    void SpawnEnemy(List<Enemy> spawnList)
+    {
+        foreach (Enemy enemy in spawnList)
         {
             int randomIndex = Random.Range(0, spawnPoints.Count);
             Instantiate(enemy, spawnPoints[randomIndex].position, Quaternion.identity);

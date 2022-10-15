@@ -9,6 +9,8 @@ public class movementController: MonoBehaviour
     public float blinkPower = 2.0f;
 
     private bool isBlink = false;
+    private bool canBlink = true;
+
     private Vector2 blinkDir;
     private Rigidbody2D rb2d;
     
@@ -19,6 +21,8 @@ public class movementController: MonoBehaviour
 
     void Update()
     {
+        if (isBlink) return;
+
         if (Input.GetKey(KeyCode.S))
         {
             this.transform.position += Vector3.down * speed * Time.deltaTime;
@@ -55,10 +59,7 @@ public class movementController: MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (!isBlink)
-            {
-                Blink();
-            }
+            if (canBlink) Blink();
         }
     }
 
@@ -66,19 +67,24 @@ public class movementController: MonoBehaviour
     {
         rb2d.AddForce(blinkDir * blinkPower, ForceMode2D.Impulse);
         StartCoroutine(StopBlink());
+
         isBlink = true;
+        canBlink = false;
     }
 
     IEnumerator StopBlink()
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.35f); // ƒuƒŠƒ“ƒN‚·‚éŽžŠÔ‚Ì’·‚³
         rb2d.velocity = Vector2.zero;
         StartCoroutine(BlinkDelay());
+
+        isBlink = false;
     }
 
     IEnumerator BlinkDelay()
     {
         yield return new WaitForSeconds(1.0f);
-        isBlink = false;
+
+        canBlink = true;
     }
 }
