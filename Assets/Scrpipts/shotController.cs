@@ -6,14 +6,18 @@ public class shotController : MonoBehaviour
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shotPoint;
 
-    public float shotSpeed;
-    public float shotDamage;
-    public float shotDelay;
+    private BulletProperties bulletProperties;
+
+    public float attackSpeedMultiplier;
 
     public bool canShot;
 
     void Start()
     {
+        if (bulletPrefab != null)
+        {
+            bulletProperties = bulletPrefab.BulletStats;
+        }
         canShot = true;
     }
 
@@ -24,7 +28,7 @@ public class shotController : MonoBehaviour
         if (canShot)
         {
             Shot(direction);
-            StartCoroutine(ShotDelay(shotDelay));
+            StartCoroutine(ShotDelay(bulletProperties.shotDelay * attackSpeedMultiplier));
         }
     }
 
@@ -40,18 +44,23 @@ public class shotController : MonoBehaviour
     {
         Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
         Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
-        newBullet.damage = shotDamage;
+        // newBullet.damage = shotDamage;
 
         if (direction == Vector2.zero)
         {
-            rb2d.velocity = Vector2.right * shotSpeed;
+            rb2d.velocity = Vector2.right * bulletProperties.bulletSpeed;
         }
         else
         {
-            rb2d.velocity = direction * shotSpeed; // 弾のステータスのスピードをかける
+            rb2d.velocity = direction * bulletProperties.bulletSpeed;
         }
 
         canShot = false;
+    }
+
+    public void ChangeBullet(Bullet bulletPrefab)
+    {
+        this.bulletPrefab = bulletPrefab;
     }
 
     IEnumerator ShotDelay(float delay)

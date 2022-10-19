@@ -15,5 +15,6 @@ MonoBehaviour:
   enemyName: Pumpkin
   maxHp: 5
   moveSpeed: 0.5
+  attackDamage: 1
   spawnInterval: 5
   enemyDescription: Enemy description.

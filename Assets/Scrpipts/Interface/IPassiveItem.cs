@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IPassiveItem
 {
-    void Buff();
+    void OnEquip();
+    void OnUnEquip();
 }

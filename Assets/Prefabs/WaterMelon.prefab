@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99119775b8261e4889e0850d8f238a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemProperties: {fileID: 11400000, guid: d561514e59b41824fa6de0e5036a5ebe, type: 2}
   activeTime: 5
   coolDown: 10
   currentState: 0
+  attackSpeedMultiplierBuff: 0.8

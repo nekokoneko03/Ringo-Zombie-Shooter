@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class WaterMelon : ActiveItem
+public class WaterMelon : ActiveItem, ITempBuff
 {
+    public float attackSpeedMultiplierBuff;
+
     shotController playerStatus;
-    float originShotDelay;
 
     public override void OnUse(GameObject player)
     {
         playerStatus = player.GetComponent<shotController>();
-        originShotDelay = playerStatus.shotDelay;
-        playerStatus.shotDelay = 0.2f;
+        Adapt();
     }
-
     public override void OnEnd()
     {
-        playerStatus.shotDelay = originShotDelay;
+        OffAdapt();
+    }
+
+    public void Adapt()
+    {
+        playerStatus.attackSpeedMultiplier -= attackSpeedMultiplierBuff;
+    }
+
+    public void OffAdapt()
+    {
+        playerStatus.attackSpeedMultiplier += attackSpeedMultiplierBuff;
     }
 }

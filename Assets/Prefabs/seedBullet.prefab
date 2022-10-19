@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7813928469186324147}
   - component: {fileID: 7813928469186324140}
-  - component: {fileID: 7813928469186324141}
   - component: {fileID: -2452843103273678362}
+  - component: {fileID: 7813928469186324141}
   - component: {fileID: 5293288252948804700}
   m_Layer: 0
   m_Name: seedBullet
@@ -87,6 +87,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2452843103273678362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813928469186324142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cfb1acdd543da4ca49013231150eaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletStats: {fileID: 11400000, guid: 95d540d5829e8bd44b4fd38eac674ce7, type: 2}
 --- !u!50 &7813928469186324141
 Rigidbody2D:
   serializedVersion: 4
@@ -108,19 +121,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2452843103273678362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7813928469186324142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11cfb1acdd543da4ca49013231150eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!61 &5293288252948804700
 BoxCollider2D:
   m_ObjectHideFlags: 0
