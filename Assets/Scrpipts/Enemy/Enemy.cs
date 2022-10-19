@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     [Header("Enemy Status")]
     public EnemyStatus status;
+    public float currentHp;
 
     private Transform target;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        currentHp = status.maxHp;
     }
 
     protected void MoveToTarget()
@@ -19,4 +21,20 @@ public class Enemy : MonoBehaviour
         this.transform.position = 
             Vector2.MoveTowards(this.transform.position, target.position, status.moveSpeed * Time.deltaTime);
     }
+
+    public virtual void TakeDamage(float damage)
+    {
+        currentHp -= damage;
+
+        if (currentHp <= 0)
+        {
+            Death();
+        }
+    }
+
+    public virtual void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
 }
