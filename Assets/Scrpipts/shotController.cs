@@ -7,6 +7,7 @@ public class shotController : MonoBehaviour
     [SerializeField] private Transform shotPoint;
 
     public float shotSpeed;
+    public float shotDamage;
     public float shotDelay;
 
     public bool canShot;
@@ -39,6 +40,7 @@ public class shotController : MonoBehaviour
     {
         Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
         Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
+        newBullet.damage = shotDamage;
 
         if (direction == Vector2.zero)
         {

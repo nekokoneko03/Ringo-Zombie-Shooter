@@ -8,4 +8,14 @@ public class Pumpkin : Enemy
     {
         MoveToTarget();
     }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+    }
+
+    public override void Death()
+    {
+        base.Death();
+    }
 }

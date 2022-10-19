@@ -626,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e00bca4f8138ea42a4334439d5c6b7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawnEnebled: 0
+  isSpawnEnebled: 1
   enemyPrefabs:
   - {fileID: 6973392657186846086, guid: 72af0ee90852cae40a4e69207115c8cf, type: 3}
   - {fileID: -7651618600292134126, guid: 8372df4f48495fa4e9c773d36631feb9, type: 3}
@@ -1452,6 +1452,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: -2452843103273678362, guid: e71a71537aec14a4ba89949c3c784364, type: 3}
   shotPoint: {fileID: 1441549100}
   shotSpeed: 4
+  shotDamage: 2
   shotDelay: 1
   canShot: 0
 --- !u!95 &1441549105
