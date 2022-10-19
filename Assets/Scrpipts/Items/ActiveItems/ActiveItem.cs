@@ -9,4 +9,6 @@ public abstract class ActiveItem : MonoBehaviour, IUseableItem
     public currentState currentState = currentState.Ready;
 
     public abstract void OnUse(GameObject player);
+
+    public abstract void OnEnd();
 }

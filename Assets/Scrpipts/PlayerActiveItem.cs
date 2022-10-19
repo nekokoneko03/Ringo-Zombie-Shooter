@@ -7,23 +7,25 @@ public class PlayerActiveItem : MonoBehaviour
     [SerializeField] private ActiveItem activeItem;
     [SerializeField] private float activeTime;
     [SerializeField] private float coolDownTime;
+    [SerializeField] private currentState currentState;
 
     private void Start()
     {
         activeTime = activeItem.activeTime;
         coolDownTime = activeItem.coolDown;
+        currentState = activeItem.currentState;
     }
 
     private void Update()
     {
 
-        switch (activeItem.currentState)
+        switch (currentState)
         {
             case currentState.Ready:
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     activeItem.OnUse(this.gameObject);
-                    activeItem.currentState = currentState.Active;
+                    currentState = currentState.Active;
                     break;
                 }
                 else
@@ -36,7 +38,8 @@ public class PlayerActiveItem : MonoBehaviour
 
                 if (activeTime <= 0)
                 {
-                    activeItem.currentState = currentState.Cooldown;
+                    currentState = currentState.Cooldown;
+                    activeItem.OnEnd();
                     activeTime = activeItem.activeTime;
                     break;
                 }else
@@ -52,7 +55,7 @@ public class PlayerActiveItem : MonoBehaviour
                 }
                 else
                 {
-                    activeItem.currentState = currentState.Ready;
+                    currentState = currentState.Ready;
                     coolDownTime = activeItem.coolDown;
                     break;
                 }

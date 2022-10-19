@@ -9,16 +9,13 @@ public class WaterMelon : ActiveItem
 
     public override void OnUse(GameObject player)
     {
-        Debug.Log(player.transform.name);
         playerStatus = player.GetComponent<shotController>();
         originShotDelay = playerStatus.shotDelay;
         playerStatus.shotDelay = 0.2f;
-        StartCoroutine(OnEnd());
     }
 
-    IEnumerator OnEnd()
+    public override void OnEnd()
     {
-        yield return new WaitForSeconds(activeTime);
         playerStatus.shotDelay = originShotDelay;
     }
 }
