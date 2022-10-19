@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private AudioClip shotSound;
+
+    public AudioClip ShotSound { get => shotSound; } 
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
