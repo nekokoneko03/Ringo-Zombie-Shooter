@@ -5,6 +5,7 @@ public class shotController : MonoBehaviour
 {
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private Transform shotPoint;
+    [SerializeField] private AudioSource shoot;
 
     public float shotSpeed;
     public float shotDelay;
@@ -13,6 +14,7 @@ public class shotController : MonoBehaviour
 
     void Start()
     {
+        shoot = GetComponent<AudioSource>();
         canShot = true;
     }
 
@@ -49,6 +51,7 @@ public class shotController : MonoBehaviour
             rb2d.velocity = direction * shotSpeed; // 弾のステータスのスピードをかける
         }
 
+        shoot.PlayOneShot(bulletPrefab.ShotSound);
         canShot = false;
     }
 

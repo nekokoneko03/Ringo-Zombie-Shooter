@@ -1280,7 +1280,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fbab4610a4ac3dc4b9b63f821671665b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.685
+  m_Volume: 0.356
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -2452843103273678362, guid: e71a71537aec14a4ba89949c3c784364, type: 3}
   shotPoint: {fileID: 1441549100}
+  shoot: {fileID: 0}
   shotSpeed: 4
   shotDelay: 1
   canShot: 0
@@ -1613,7 +1614,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1469e125270716246b45012fbbdf68dc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
