@@ -11,8 +11,9 @@ public class PlayerActiveItem : MonoBehaviour
 
     private void Start()
     {
-        activeTime = activeItem.activeTime;
-        coolDownTime = activeItem.coolDown;
+        activeItem = GetComponent<ActiveItem>();
+        activeTime = activeItem.activeItemProperties.activeTime;
+        coolDownTime = activeItem.activeItemProperties.coolDownTime;
         currentState = activeItem.currentState;
     }
 
@@ -32,7 +33,7 @@ public class PlayerActiveItem : MonoBehaviour
                 {
                     break;
                 }
-    
+
             case currentState.Active:
                 activeTime -= Time.deltaTime;
 
@@ -40,9 +41,10 @@ public class PlayerActiveItem : MonoBehaviour
                 {
                     currentState = currentState.Cooldown;
                     activeItem.OnEnd();
-                    activeTime = activeItem.activeTime;
+                    activeTime = activeItem.activeItemProperties.activeTime;
                     break;
-                }else
+                }
+                else
                 {
                     break;
                 }
@@ -56,16 +58,9 @@ public class PlayerActiveItem : MonoBehaviour
                 else
                 {
                     currentState = currentState.Ready;
-                    coolDownTime = activeItem.coolDown;
+                    coolDownTime = activeItem.activeItemProperties.coolDownTime;
                     break;
                 }
         }
     }
-}
-
-public enum currentState
-{
-    Ready,
-    Active,
-    Cooldown,
 }

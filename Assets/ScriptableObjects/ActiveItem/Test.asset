@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bbac4f22379a9a49aef09f1068df9b5, type: 3}
-  m_Name: WaterMelon
+  m_Name: Test
   m_EditorClassIdentifier: 
-  name: watermelon
+  name: 
   description: 
   targetType: 0
   effectType: 0
-  statusType: 2
-  amount: 4
-  activeTime: 3
-  coolDownTime: 2
+  statusType: 0
+  amount: 0
+  activeTime: 0
+  coolDownTime: 0

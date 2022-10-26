@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9f32d26ed77b949b96c6809c85330e, type: 3}
   m_Name: AppleSeed
   m_EditorClassIdentifier: 
-  damage: 1
-  shotDelay: 1
-  bulletSpeed: 2
+  name: 
+  description: 
+  attackDamage: 1
+  attackSpeed: 1
+  bulletSpeed: 5
+  bulletCount: 0
+  bulletAngle: 15

@@ -1305,6 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1441549100}
+  - component: {fileID: 1441549108}
   - component: {fileID: 1441549101}
   - component: {fileID: 1441549104}
   - component: {fileID: 1441549107}
@@ -1313,6 +1314,7 @@ GameObject:
   - component: {fileID: 1441549102}
   - component: {fileID: 1441549105}
   - component: {fileID: 1441549106}
+  - component: {fileID: 1441549109}
   m_Layer: 0
   m_Name: Ringo_Player
   m_TagString: Player
@@ -1400,7 +1402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 1441549105}
-  speed: 1
   blinkPower: 2
 --- !u!58 &1441549102
 CircleCollider2D:
@@ -1453,7 +1454,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: -2452843103273678362, guid: e71a71537aec14a4ba89949c3c784364, type: 3}
   shotPoint: {fileID: 1441549100}
-  attackSpeedMultiplier: 1
   canShot: 0
 --- !u!95 &1441549105
 Animator:
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d745b85d658944395466062393cb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeItem: {fileID: 5685127666740641074, guid: 4ca7096b28f893545b5073b714a029e1, type: 3}
+  activeItem: {fileID: 0}
   activeTime: 0
   coolDownTime: 0
   currentState: 0
@@ -1503,8 +1503,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069db1cb55a4672478442c04fb8a2a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1441549108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441549098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286434b700af5cd4eafa3d92848ed6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxHp: 5
   currentHp: 0
+  attackDamage: 1
+  movementSpeed: 1
+  immune: 0
+  attackSpeed: 1
+  bulletCount: 1
+  bulletSpeed: 1
+  bulletPenetration: 1
+--- !u!114 &1441549109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441549098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cbceb5c6662ee439a888f33a5da414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeItemProperties: {fileID: 11400000, guid: d561514e59b41824fa6de0e5036a5ebe, type: 2}
+  currentState: 0
 --- !u!1 &1481727451
 GameObject:
   m_ObjectHideFlags: 0

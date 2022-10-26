@@ -7,13 +7,13 @@ public class shotController : MonoBehaviour
     [SerializeField] private Transform shotPoint;
 
     private BulletProperties bulletProperties;
-
-    public float attackSpeedMultiplier;
+    private PlayerStatus playerStatus;
 
     public bool canShot;
 
     void Start()
     {
+        playerStatus = GetComponent<PlayerStatus>();
         if (bulletPrefab != null)
         {
             bulletProperties = bulletPrefab.BulletStats;
@@ -28,7 +28,7 @@ public class shotController : MonoBehaviour
         if (canShot)
         {
             Shot(direction);
-            StartCoroutine(ShotDelay(bulletProperties.shotDelay * attackSpeedMultiplier));
+            StartCoroutine(ShotDelay((1f / (bulletProperties.attackSpeed * playerStatus.AttackSpeed))));
         }
     }
 
@@ -42,20 +42,24 @@ public class shotController : MonoBehaviour
 
     void Shot(Vector2 direction)
     {
-        Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
-        Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
-        // newBullet.damage = shotDamage;
-
-        if (direction == Vector2.zero)
-        {
-            rb2d.velocity = Vector2.right * bulletProperties.bulletSpeed;
-        }
-        else
-        {
-            rb2d.velocity = direction * bulletProperties.bulletSpeed;
-        }
-
         canShot = false;
+        float totalBulletCount = bulletProperties.bulletCount + playerStatus.bulletCount;
+        float medianOfNum = Mathf.Lerp(1, totalBulletCount, 0.5f);
+        
+        for(int i = 0; i < totalBulletCount; i++)
+        {
+            
+            Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
+            Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
+
+            Vector3 bulletAngle =
+                Quaternion.Euler(new Vector3(0, 0,
+                bulletProperties.bulletAngle * (medianOfNum - (totalBulletCount - i))
+                )) * Vector2.up;
+
+            rb2d.velocity = bulletAngle * bulletProperties.bulletSpeed * playerStatus.bulletSpeed;
+            newBullet.transform.rotation = Quaternion.FromToRotation(Vector2.up, bulletAngle);
+        }
     }
 
     public void ChangeBullet(Bullet bulletPrefab)

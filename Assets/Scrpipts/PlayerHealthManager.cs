@@ -5,26 +5,22 @@ using UnityEngine;
 
 public class PlayerHealthManager : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float maxHp;
-
-    public float currentHp;
-
     private Action OnDeath;
 
-    // getter
-    public float MaxHp { get => maxHp; }
-
+    private PlayerStatus playerStatus;
+    
     private void Start()
     {
-        currentHp = MaxHp;
+        playerStatus = GetComponent<PlayerStatus>();
+        playerStatus.CurrentHp = playerStatus.MaxHp;
         OnDeath = () => Destroy(this.gameObject);
     }
 
     public void TakeDamage(float damage)
     {
-        currentHp -= damage;
+        playerStatus.CurrentHp -= damage;
 
-        if (currentHp <= 0)
+        if (playerStatus.CurrentHp <= 0)
         {
             Death();
         }
