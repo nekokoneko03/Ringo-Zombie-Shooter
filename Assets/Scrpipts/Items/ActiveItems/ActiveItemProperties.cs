@@ -15,11 +15,9 @@ public class ActiveItemProperties : ScriptableObject
     public float amount;
     public float activeTime;
     public float coolDownTime;
-}
-
-[System.Serializable]
-public class upgradeDetail
-{
+    [Header("Change one item below this when EffectType is 'ChangeSomthing'.")]
+    public Bullet bulletPrefab;
+    public OnHitEffect onHitEffect;
 }
 
 public enum TargetType
@@ -32,7 +30,7 @@ public enum EffectType
 {
     Buff,
     DeBuff,
-    Projectile
+    ChangeSomething
 }
 
 public enum StatusType
@@ -43,8 +41,10 @@ public enum StatusType
     BulletCount,
     BulletSpeed,
     BulletPenetration,
-    movementSpeed,
-    immune
+    MovementSpeed,
+    Immune,
+    ChangeBullet,
+    ChangeOnHitEffect
 }
 public enum currentState
 {

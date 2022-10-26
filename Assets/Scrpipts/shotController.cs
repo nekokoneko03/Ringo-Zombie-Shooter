@@ -3,20 +3,23 @@ using UnityEngine;
 
 public class shotController : MonoBehaviour
 {
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform shotPoint;
 
     private BulletProperties bulletProperties;
     private PlayerStatus playerStatus;
+
+    private Bullet _previousBullet;
+    private OnHitEffect _onHitEffect;
 
     public bool canShot;
 
     void Start()
     {
         playerStatus = GetComponent<PlayerStatus>();
-        if (bulletPrefab != null)
+        if (_bulletPrefab != null)
         {
-            bulletProperties = bulletPrefab.BulletStats;
+            bulletProperties = _bulletPrefab.BulletStats;
         }
         canShot = true;
     }
@@ -49,7 +52,7 @@ public class shotController : MonoBehaviour
         for(int i = 0; i < totalBulletCount; i++)
         {
             
-            Bullet newBullet = Instantiate(bulletPrefab, shotPoint.position, Quaternion.identity);
+            Bullet newBullet = Instantiate(_bulletPrefab, shotPoint.position, Quaternion.identity);
             Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
 
             Vector3 bulletAngle =
@@ -59,12 +62,30 @@ public class shotController : MonoBehaviour
 
             rb2d.velocity = bulletAngle * bulletProperties.bulletSpeed * playerStatus.bulletSpeed;
             newBullet.transform.rotation = Quaternion.FromToRotation(Vector2.up, bulletAngle);
+            newBullet.damage = playerStatus.attackDamage;
+            newBullet.OnHitEffect += _onHitEffect ? _onHitEffect.Effect : null;
         }
     }
 
     public void ChangeBullet(Bullet bulletPrefab)
     {
-        this.bulletPrefab = bulletPrefab;
+        _previousBullet = _bulletPrefab;
+        _bulletPrefab = bulletPrefab;
+    }
+
+    public void RevertBullet()
+    {
+        _bulletPrefab = _previousBullet;
+    }
+
+    public void ChangeBulletEffect(OnHitEffect onHitEffect)
+    {
+        _onHitEffect = onHitEffect;
+    }
+
+    public void RevertBulletEffect()
+    {
+        _onHitEffect = null;
     }
 
     IEnumerator ShotDelay(float delay)

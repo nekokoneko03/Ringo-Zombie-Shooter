@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 1441549105}
   - component: {fileID: 1441549106}
   - component: {fileID: 1441549109}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ringo_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1452,7 +1452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f646182cb7ebe4bb87ca0f8fe19476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: -2452843103273678362, guid: e71a71537aec14a4ba89949c3c784364, type: 3}
+  _bulletPrefab: {fileID: -2452843103273678362, guid: e71a71537aec14a4ba89949c3c784364, type: 3}
   shotPoint: {fileID: 1441549100}
   canShot: 0
 --- !u!95 &1441549105
@@ -1520,8 +1520,8 @@ MonoBehaviour:
   attackDamage: 1
   movementSpeed: 1
   immune: 0
-  attackSpeed: 1
-  bulletCount: 1
+  attackSpeed: 3
+  bulletCount: 3
   bulletSpeed: 1
   bulletPenetration: 1
 --- !u!114 &1441549109
@@ -1536,8 +1536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cbceb5c6662ee439a888f33a5da414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeItemProperties: {fileID: 11400000, guid: d561514e59b41824fa6de0e5036a5ebe, type: 2}
+  activeItemProperties: {fileID: 11400000, guid: f0da7affb745c1d46b65184d495999c6, type: 2}
+  test: {fileID: 11400000, guid: d561514e59b41824fa6de0e5036a5ebe, type: 2}
   currentState: 0
+  canGetNewItem: 0
 --- !u!1 &1481727451
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,10 +11,17 @@ public class ShooterCharacter : CharacterStatus
     public float bulletSpeed;
     public float bulletPenetration;
 
+    private shotController shotController;
+
     public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
     public float BulletileSpeed { get => bulletSpeed; set => bulletSpeed = value; }
     public float BulletCount { get => bulletCount; set => bulletCount = value; }
     public float BulletPenetration { get => bulletPenetration; set => bulletPenetration = value; }
+
+    private void Start()
+    {
+        shotController = GetComponent<shotController>();
+    }
 
     public override void Buff(StatusType statusType, float amount)
     {

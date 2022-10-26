@@ -24,7 +24,7 @@ public class CharacterStatus : MonoBehaviour, IBuffable
             case StatusType.AttackDamage:
                 AttackDamage += amount;
                 break;
-            case StatusType.movementSpeed:
+            case StatusType.MovementSpeed:
                 MovementSpeed += amount;
                 break;
         }
@@ -37,7 +37,7 @@ public class CharacterStatus : MonoBehaviour, IBuffable
             case StatusType.AttackDamage:
                 AttackDamage -= amount;
                 break;
-            case StatusType.movementSpeed:
+            case StatusType.MovementSpeed:
                 MovementSpeed -= amount;
                 break;
         }

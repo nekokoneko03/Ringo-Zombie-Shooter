@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bbac4f22379a9a49aef09f1068df9b5, type: 3}
-  m_Name: Test
+  m_Name: TEST CHANGE BULLET
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  name: 11
-  description: 11
+  name: 123
+  description: 123
   targetType: 0
-  effectType: 0
-  statusType: 3
-  amount: 5
+  effectType: 2
+  statusType: 8
+  amount: 0
   activeTime: 5
-  coolDownTime: 2
-  bulletPrefab: {fileID: 0}
+  coolDownTime: 3
+  bulletPrefab: {fileID: -2452843103273678362, guid: 3d5027c6c8fd043448540f720856b334, type: 3}
   onHitEffect: {fileID: 0}

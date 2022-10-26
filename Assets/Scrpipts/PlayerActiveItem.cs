@@ -25,6 +25,7 @@ public class PlayerActiveItem : MonoBehaviour
             case currentState.Ready:
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
+                    if (activeItem == null) return;
                     activeItem.OnUse(this.gameObject);
                     currentState = currentState.Active;
                     break;
@@ -41,6 +42,7 @@ public class PlayerActiveItem : MonoBehaviour
                 {
                     currentState = currentState.Cooldown;
                     activeItem.OnEnd();
+                    if (activeItem.activeItemProperties == null) return;
                     activeTime = activeItem.activeItemProperties.activeTime;
                     break;
                 }
@@ -58,9 +60,17 @@ public class PlayerActiveItem : MonoBehaviour
                 else
                 {
                     currentState = currentState.Ready;
+                    if (activeItem.activeItemProperties == null) return;
                     coolDownTime = activeItem.activeItemProperties.coolDownTime;
                     break;
                 }
         }
+    }
+
+    public void Init()
+    {
+        activeTime = activeItem.activeItemProperties.activeTime;
+        coolDownTime = activeItem.activeItemProperties.coolDownTime;
+        currentState = activeItem.currentState;
     }
 }
