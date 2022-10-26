@@ -89,5 +89,6 @@ public class ActiveItem : Item
         activeItemProperties = newItem;
         currentState = currentState.Ready;
         GetComponent<PlayerActiveItem>().Init();
+        UiManager.instance.ChangeActiveItemIcon(newItem.icon);
     }
 }
