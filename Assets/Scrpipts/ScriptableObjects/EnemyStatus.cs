@@ -8,6 +8,7 @@ public class EnemyStatus : ScriptableObject
     public string enemyName = "New enemy";
     public float maxHp = 0f;
     public float moveSpeed = 0f;
+    public float attackDamage;
     public float spawnInterval = 0f;
     [TextArea]
     public string enemyDescription = "Enemy description.";

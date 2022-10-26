@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbac4f22379a9a49aef09f1068df9b5, type: 3}
+  m_Name: TEST CHANGE BULLET
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  name: 123
+  description: 123
+  targetType: 0
+  effectType: 2
+  statusType: 8
+  amount: 0
+  activeTime: 5
+  coolDownTime: 3
+  bulletPrefab: {fileID: -2452843103273678362, guid: 3d5027c6c8fd043448540f720856b334, type: 3}
+  onHitEffect: {fileID: 0}

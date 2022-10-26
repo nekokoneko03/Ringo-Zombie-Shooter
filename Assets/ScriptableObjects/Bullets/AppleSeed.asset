@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c39d4b41c0241bb45b1fb7563767c602, type: 3}
-  m_Name: RottenApple
+  m_Script: {fileID: 11500000, guid: af9f32d26ed77b949b96c6809c85330e, type: 3}
+  m_Name: AppleSeed
   m_EditorClassIdentifier: 
-  enemyName: Rotten Apple
-  maxHp: 2
-  moveSpeed: 0.8
+  name: 
+  description: 
   attackDamage: 1
-  spawnInterval: 2
-  enemyDescription: 
+  attackSpeed: 1
+  bulletSpeed: 5
+  bulletCount: 0
+  bulletAngle: 15

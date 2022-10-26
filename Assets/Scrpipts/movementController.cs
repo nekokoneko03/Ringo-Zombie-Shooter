@@ -6,9 +6,9 @@ public class movementController : MonoBehaviour
 {
     [SerializeField] private Animator playerAnim;
 
-    public float speed = 1.0f;
-
     public float blinkPower = 2.0f;
+
+    private PlayerStatus playerStatus;
 
     private bool isBlink = false;
     private Vector2 blinkDir;
@@ -18,6 +18,7 @@ public class movementController : MonoBehaviour
 
     void Start()
     {
+        playerStatus = GetComponent<PlayerStatus>();
         rb2d = this.GetComponent<Rigidbody2D>();
         playerRenderer = this.GetComponent<SpriteRenderer>();
     }
@@ -26,7 +27,7 @@ public class movementController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.S))
         {
-            this.transform.position += Vector3.down * speed * Time.deltaTime;
+            this.transform.position += Vector3.down * playerStatus.MovementSpeed * Time.deltaTime;
 
             playerAnim.SetFloat("Y", -1);
 
@@ -35,7 +36,7 @@ public class movementController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.position += Vector3.right * speed * Time.deltaTime;
+            this.transform.position += Vector3.right * playerStatus.MovementSpeed * Time.deltaTime;
 
             playerAnim.SetFloat("X", 1);
 
@@ -46,7 +47,7 @@ public class movementController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            this.transform.position += Vector3.up * speed * Time.deltaTime;
+            this.transform.position += Vector3.up * playerStatus.MovementSpeed * Time.deltaTime;
 
             playerAnim.SetFloat("Y", 1);
 
@@ -55,7 +56,7 @@ public class movementController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.position += Vector3.left * speed * Time.deltaTime;
+            this.transform.position += Vector3.left * playerStatus.MovementSpeed * Time.deltaTime;
 
             playerAnim.SetFloat("X", -1);
 
@@ -75,7 +76,7 @@ public class movementController : MonoBehaviour
             playerAnim.SetBool("Ringo Idle", false);
         }
 
-        // ----------------ÉuÉäÉìÉNópÇÃèàóù------------------------
+        // ----------------Blink stuffs.------------------------
 
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {

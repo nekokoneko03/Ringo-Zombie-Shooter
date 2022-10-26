@@ -22,6 +22,16 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2.MoveTowards(this.transform.position, target.position, status.moveSpeed * Time.deltaTime);
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        var target = collision.GetComponent<IDamageable>();
+
+        if (target != null)
+        {
+            collision.GetComponent<IDamageable>().TakeDamage(status.attackDamage);
+        }
+    }
+
     public virtual void TakeDamage(float damage)
     {
         currentHp -= damage;
